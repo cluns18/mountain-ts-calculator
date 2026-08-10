@@ -1,0 +1,315 @@
+@import "tailwindcss";
+
+/* ── Consistent slide layout system ── */
+html, body { background: #F2EDE0; }
+.slide-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding: 24px 16px;
+  background: #F2EDE0;
+}
+
+.slide-page {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 672px;
+  height: 600px;
+  background-color: #FFFFFF;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(21, 20, 15, 0.10);
+}
+
+.slide-header {
+  flex-shrink: 0;
+  padding: 24px 24px 12px;
+  text-align: center;
+}
+
+.slide-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0 24px;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide-content > * {
+  width: 100%;
+}
+
+.slide-content.final-quote-content {
+  justify-content: flex-start;
+}
+
+.slide-nav {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  border-top: 1px solid rgba(21, 20, 15, 0.10);
+}
+
+.slide-nav.nav-end {
+  justify-content: flex-end;
+}
+
+.slide-content img.garment-img {
+  max-width: 200px;
+  max-height: 200px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+.slide-content img.color-img {
+  max-width: 320px;
+  max-height: 260px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 12px;
+}
+
+.slide-page * {
+  box-sizing: border-box;
+}
+
+/* ── Typography ── */
+.headingColor {
+    color: #15140F;
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 0.02em;
+}
+
+.bodyColor {
+    color: #3A342A;
+    font-family: 'DM Sans', sans-serif;
+    opacity: 1;
+}
+
+.bgColor {
+    background-color: #FFFFFF;
+}
+
+/* ── Buttons ── */
+.btnColor {
+    background-color: #2F5233;
+    color: #FFFFFF;
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 0.06em;
+    font-size: 1.05rem;
+    border: solid 2px #2F5233;
+    font-weight: 600;
+}
+
+.btnColor:hover {
+    background-color: #203A24;
+    border-color: #203A24;
+}
+
+.btnInactive {
+    background-color: transparent;
+    color: #15140F;
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 0.06em;
+    font-size: 1.05rem;
+    border: solid 2px rgba(21, 20, 15, 0.22);
+    font-weight: 600;
+    position: relative;
+    overflow: hidden;
+    transition: color 0.3s ease, border-color 0.3s ease;
+    z-index: 0;
+}
+
+.btnInactive::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background-color: #2F5233;
+    transition: width 0.25s linear;
+    z-index: -1;
+}
+
+.btnInactive:hover::before {
+    width: 100%;
+}
+
+.btnInactive:hover {
+    color: #FFFFFF;
+    border-color: #2F5233;
+}
+
+/* ── Inputs ── */
+.slide-page input,
+.slide-page select,
+.slide-page textarea {
+    background: #FFFFFF !important;
+    border-color: rgba(21, 20, 15, 0.22) !important;
+    color: #15140F !important;
+}
+
+.slide-page input::placeholder,
+.slide-page textarea::placeholder {
+    color: rgba(21, 20, 15, 0.45) !important;
+}
+
+.slide-page input:focus,
+.slide-page select:focus,
+.slide-page textarea:focus {
+    border-color: #2F5233 !important;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(47, 82, 51, 0.28);
+}
+
+.light-card input,
+.light-card select,
+.light-card textarea {
+    background: #fff !important;
+    border-color: rgba(21, 20, 15, 0.22) !important;
+    color: #15140F !important;
+}
+
+.light-card input::placeholder,
+.light-card textarea::placeholder {
+    color: rgba(21, 20, 15, 0.45) !important;
+}
+
+.light-card input:focus,
+.light-card select:focus,
+.light-card textarea:focus {
+    border-color: #2F5233 !important;
+    box-shadow: 0 0 0 2px rgba(47, 82, 51, 0.2);
+}
+
+/* ── Scrollbar ── */
+.slide-content::-webkit-scrollbar { width: 4px; }
+.slide-content::-webkit-scrollbar-track { background: transparent; }
+.slide-content::-webkit-scrollbar-thumb { background: rgba(21, 20, 15, 0.18); border-radius: 4px; }
+
+.error-shake {
+    border: 3px solid #A34A22 !important;
+    animation: shake 0.3s ease-in-out 2;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 80% { transform: translateX(-10px); }
+    40%, 60% { transform: translateX(10px); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.error-message {
+    color: #A34A22;
+    font-size: 0.85rem;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+    font-family: 'DM Sans';
+}
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+    .slide-container { padding: 8px; }
+    .slide-page { height: calc(100vh - 16px); max-height: 600px; border-radius: 10px; }
+    .slide-header { padding: 12px 16px 6px; }
+    .slide-header h1 { font-size: 1.25rem; }
+    .slide-header p { font-size: 0.8rem; }
+    .slide-content { padding: 0 12px; }
+    .slide-nav { padding: 10px 12px; }
+    .slide-content img.garment-img { max-width: 140px; max-height: 140px; }
+    .slide-content img.color-img { max-width: 180px; max-height: 140px; }
+    h2 { font-size: 0.9rem; }
+    .bodyColor { font-size: 0.85rem; }
+    .btnColor, .btnInactive { font-size: 0.8rem; padding: 7px 12px; }
+
+    /* Shrink intro logo on mobile */
+    .intro-logo { width: 48px !important; margin-bottom: 8px !important; }
+
+    /* Garment select: image on top, grid below on mobile */
+    .garment-layout {
+      flex-direction: column !important;
+      gap: 0 !important;
+      flex: 1;
+    }
+    .garment-layout .garment-preview {
+      width: 100% !important;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .garment-layout .garment-preview img {
+      max-width: 200px !important;
+      max-height: 200px !important;
+      width: auto !important;
+      height: auto !important;
+      object-fit: contain !important;
+    }
+    .garment-layout .garment-buttons {
+      width: 100% !important;
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 4px !important;
+      flex-shrink: 0;
+      padding-top: 8px;
+    }
+    .garment-layout .garment-buttons button {
+      padding: 6px 6px !important;
+      font-size: 0.68rem !important;
+      line-height: 1.2 !important;
+    }
+
+    /* Size grid: 4 cols on top row, 3 on bottom */
+    .size-grid { grid-template-columns: repeat(4, 1fr) !important; gap: 3px !important; }
+    .size-cell { padding: 5px 1px 3px !important; }
+    .size-label { font-size: 0.6rem !important; }
+    .size-btn { width: 16px !important; height: 16px !important; font-size: 0.7rem !important; }
+    .size-input { width: 36px !important; font-size: 0.7rem !important; }
+}
+
+/* Hide native number input spinner arrows (they're ugly on hover) */
+.size-input::-webkit-outer-spin-button,
+.size-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.size-input[type=number] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+@media (max-width: 480px) {
+    .slide-page { border-radius: 0; border: none; height: 100vh; max-height: none; }
+    .slide-container { padding: 0; }
+    .slide-header { padding: 10px 14px 4px; }
+    .slide-header h1 { font-size: 1.15rem; }
+    .slide-content { padding: 0 10px; }
+    .slide-nav { padding: 8px 10px; }
+    .btnColor, .btnInactive { font-size: 0.78rem; padding: 6px 10px; }
+
+    /* Light card tighten */
+    .light-card { padding: 10px !important; }
+    .light-card h3 { font-size: 0.85rem !important; }
+    .light-card p { font-size: 0.65rem !important; }
+    .form-grid { gap: 4px !important; }
+    .form-grid input { padding: 5px 8px !important; font-size: 0.7rem !important; }
+
+    /* Counter pill */
+    .counter-pill { padding: 4px 12px !important; gap: 8px !important; }
+    .counter-pill span:first-child { font-size: 0.7rem !important; }
+    .counter-pill span:last-child { font-size: 0.8rem !important; }
+}
