@@ -278,6 +278,7 @@ function App() {
             onNext={handleNext}
             onPrevious={handlePrevious}
             selectedLocations={selectedLocation}
+            selectedColor={selectedColor}
             setColorCounts={setLocationColorCounts}
           />
         )}

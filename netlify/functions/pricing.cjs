@@ -10,6 +10,13 @@ const tierForQuantity = (matrix, quantity) => {
     return matrix[0];
 };
 
+// A dark garment needs a white underbase laid down before the colour inks will
+// read, and that base layer burns a real screen. The matrix prices by SCREEN
+// count, not by how many colours the customer names, so a 3-colour design on
+// black is a 4-screen job. Garment colours carry an `underbase` flag:
+// 0 = light enough to print straight onto, 1 = needs the base layer.
+const screensForLocation = (numColors, needsUnderbase) => numColors + (needsUnderbase ? 1 : 0);
+
 const pricing = {
     screenPrintingMatrix: [
         { quantity: 50, prices: [1.89, 2.25, 2.70, 3.15, 3.60, 4.05, 4.50, 5.40, 6.30, 7.20] },
@@ -33,11 +40,11 @@ const pricing = {
     },
     formulas: {
         blankGarmentCost: (cost) => cost * 1.4,
-        screenPrintingCost: (numColors, quantity, matrix) => {
+        screenPrintingCost: (screens, quantity, matrix) => {
             const entry = tierForQuantity(matrix, quantity);
             if (!entry) return 0;
-            const index = Math.min(numColors - 1, entry.prices.length - 1);
-            return entry.prices[index] || 0;
+            if (screens < 1 || screens > entry.prices.length) return null;
+            return entry.prices[screens - 1] || 0;
         },
         screenFees: (numColors) => numColors * 18,
         embroideryCost: (quantity, matrix) => {
@@ -48,5 +55,14 @@ const pricing = {
         stitchPrice: (stitchCount) => 6 + ((Math.max(stitchCount - 5000, 0) / 5000) * 1.50),
     },
 };
+
+// Widest screen count this matrix can price. Ragged matrices (fewer colours at
+// tiny quantities) are still enforced per tier by the null check in
+// screenPrintingCost; this is the headline ceiling shown to the customer. Past
+// it we do not extrapolate: the quote is withheld and DTF is recommended.
+pricing.screensForLocation = screensForLocation;
+pricing.maxScreens = Math.max(
+    ...pricing.screenPrintingMatrix.map((row) => row.prices.length)
+);
 
 module.exports = pricing;
