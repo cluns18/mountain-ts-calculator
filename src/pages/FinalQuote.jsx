@@ -34,6 +34,11 @@ export default function FinalQuote({
     const [quantity, setQuantity] = useState(MOQ);
     const [pricePerItem, setPricePerItem] = useState(0);
     const [totalPrice, setTotalPrice] = useState(0);
+    // Backstop for a job needing more screens than the matrix prices. ColorCount
+    // caps the picker so this should be unreachable from the UI, but the pricing
+    // function is a public endpoint and a wrong number is worse than no number.
+    const [exceedsScreens, setExceedsScreens] = useState(false);
+    const [screenInfo, setScreenInfo] = useState({ screensRequired: 0, maxScreens: 0 });
     const [formData, setFormData] = useState({ name: '', company: '', email: '', phone: '' });
     const [isFormValid, setIsFormValid] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -50,10 +55,16 @@ export default function FinalQuote({
     };
 
     const fetchQuote = useCallback(throttle(async (qty) => {
-        const { totalQuote, pricePerItem } = await calculateFinalQuote(
+        const quote = await calculateFinalQuote(
             selectedGarment, qty,
             { selectedProject, selectedSPGarment, selectedEmbGarment, selectedColor, locationColorCounts, selectedSpecialInks, locationThreadCounts }
         );
+
+        setExceedsScreens(!!quote.exceedsScreens);
+        if (quote.exceedsScreens) setScreenInfo({ screensRequired: quote.screensRequired, maxScreens: quote.maxScreens });
+        // Re-bind so a withheld quote reads as 0 rather than throwing on undefined.
+        const pricePerItem = Number(quote.pricePerItem) || 0;
+        const totalQuote = Number(quote.totalQuote) || 0;
         setPricePerItem(parseFloat(pricePerItem.toFixed(2)));
         setTotalPrice(parseFloat(totalQuote.toFixed(2)));
         setFinalQuote({ pricePerItem: parseFloat(pricePerItem.toFixed(2)), totalPrice: parseFloat(totalQuote.toFixed(2)), quantity: qty });
