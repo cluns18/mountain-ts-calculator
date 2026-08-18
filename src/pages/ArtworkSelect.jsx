@@ -29,7 +29,7 @@ export default function ArtworkSelect({ onNext, onPrevious, setUploadedImage, se
     return (
         <>
             <div className='slide-header'>
-                <h1 className='text-3xl font-bold headingColor'>Add Your Artwork</h1>
+                <h1 className='text-3xl font-bold headingColor'>Add your artwork</h1>
                 <p className='mt-1 text-sm bodyColor'>
                     Upload a file or describe what you have in mind. We can work with either.
                 </p>

@@ -15,7 +15,7 @@ export default function EmbPoloGarmentSelect({ onNext, onPrevious, selectedEmbGa
     return (
         <>
             <div className='slide-header'>
-                <h1 className='text-3xl font-bold headingColor'>Pick Your Polo</h1>
+                <h1 className='text-3xl font-bold headingColor'>Pick your polo</h1>
                 <p className='mt-1 text-sm bodyColor'>Different weights, fits, and price points. Choose the one that works best.</p>
             </div>
             <div className='slide-content'>

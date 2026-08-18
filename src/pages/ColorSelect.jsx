@@ -34,7 +34,7 @@ export default function ColorSelect({ onNext, onPrevious, selectedSPGarment, sel
     return (
         <>
             <div className='slide-header' style={{ padding: '16px 24px 4px' }}>
-                <h1 className='text-2xl font-bold headingColor'>Pick Your Color</h1>
+                <h1 className='text-2xl font-bold headingColor'>Pick your color</h1>
                 <p className='bodyColor' style={{ fontSize: '0.8rem', marginTop: '2px' }}>
                     {selectedColor ? selectedColor.name : 'Tap a swatch to preview.'}
                 </p>

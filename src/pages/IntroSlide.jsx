@@ -8,7 +8,7 @@ const IntroSlide = ({ selectedProject, setSelectedProject, onNext }) => {
         <>
             <div className='slide-header'>
                 <img src={MT_LOGO} alt="Mountain T's" className='intro-logo' style={{ width: '150px', height: 'auto', margin: '0 auto 10px', display: 'block' }} />
-                <h1 className='text-3xl font-bold headingColor'>Build Your Custom Order</h1>
+                <h1 className='text-3xl font-bold headingColor'>Build your custom order</h1>
                 <p className='mt-1 text-sm bodyColor'>
                     A few quick steps and you get real pricing on the spot. No waiting on a callback.
                 </p>

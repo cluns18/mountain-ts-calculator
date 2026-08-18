@@ -169,7 +169,7 @@ export default function FinalQuote({
     return (
         <>
             <div className='slide-header' style={{ padding: '8px 24px 2px' }}>
-                <h1 className='text-2xl font-bold headingColor' style={{ marginBottom: '1px', fontSize: '1.15rem' }}>Finalize Your Order</h1>
+                <h1 className='text-2xl font-bold headingColor' style={{ marginBottom: '1px', fontSize: '1.15rem' }}>Finalize your order</h1>
                 <p className='bodyColor' style={{ fontSize: '0.7rem', color: '#3A342A' }}>
                     {garmentLabel}{colorName ? ` - ${colorName}` : ''}
                 </p>
