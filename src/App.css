@@ -85,7 +85,7 @@ html, body { background: #F2EDE0; }
 /* ── Typography ── */
 .headingColor {
     color: #15140F;
-    font-family: 'Bebas Neue', sans-serif;
+    font-family: 'Archivo', sans-serif;
     letter-spacing: 0.02em;
 }
 
@@ -101,28 +101,28 @@ html, body { background: #F2EDE0; }
 
 /* ── Buttons ── */
 .btnColor {
-    background-color: #2F5233;
-    color: #FFFFFF;
-    font-family: 'Bebas Neue', sans-serif;
-    letter-spacing: 0.06em;
-    font-size: 1.05rem;
-    border: solid 2px #2F5233;
-    font-weight: 600;
+    background-color: #A34A22;
+    color: #F2EDE0;
+    font-family: 'Archivo', sans-serif;
+    letter-spacing: 0.02em;
+    font-size: 0.95rem;
+    border: solid 2px #A34A22;
+    font-weight: 700;
 }
 
 .btnColor:hover {
-    background-color: #203A24;
-    border-color: #203A24;
+    background-color: #7E3517;
+    border-color: #7E3517;
 }
 
 .btnInactive {
     background-color: transparent;
     color: #15140F;
-    font-family: 'Bebas Neue', sans-serif;
-    letter-spacing: 0.06em;
-    font-size: 1.05rem;
-    border: solid 2px rgba(21, 20, 15, 0.22);
-    font-weight: 600;
+    font-family: 'Archivo', sans-serif;
+    letter-spacing: 0.02em;
+    font-size: 0.95rem;
+    border: solid 2px #8A8272;
+    font-weight: 700;
     position: relative;
     overflow: hidden;
     transition: color 0.3s ease, border-color 0.3s ease;
@@ -136,7 +136,7 @@ html, body { background: #F2EDE0; }
     left: 0;
     width: 0%;
     height: 100%;
-    background-color: #2F5233;
+    background-color: #A34A22;
     transition: width 0.25s linear;
     z-index: -1;
 }
@@ -147,7 +147,7 @@ html, body { background: #F2EDE0; }
 
 .btnInactive:hover {
     color: #FFFFFF;
-    border-color: #2F5233;
+    border-color: #A34A22;
 }
 
 /* ── Inputs ── */
@@ -155,41 +155,41 @@ html, body { background: #F2EDE0; }
 .slide-page select,
 .slide-page textarea {
     background: #FFFFFF !important;
-    border-color: rgba(21, 20, 15, 0.22) !important;
+    border-color: #8A8272 !important;
     color: #15140F !important;
 }
 
 .slide-page input::placeholder,
 .slide-page textarea::placeholder {
-    color: rgba(21, 20, 15, 0.45) !important;
+    color: #57503F !important;
 }
 
 .slide-page input:focus,
 .slide-page select:focus,
 .slide-page textarea:focus {
-    border-color: #2F5233 !important;
+    border-color: #A34A22 !important;
     outline: none;
-    box-shadow: 0 0 0 2px rgba(47, 82, 51, 0.28);
+    box-shadow: 0 0 0 3px #D9A88E;
 }
 
 .light-card input,
 .light-card select,
 .light-card textarea {
     background: #fff !important;
-    border-color: rgba(21, 20, 15, 0.22) !important;
+    border-color: #8A8272 !important;
     color: #15140F !important;
 }
 
 .light-card input::placeholder,
 .light-card textarea::placeholder {
-    color: rgba(21, 20, 15, 0.45) !important;
+    color: #57503F !important;
 }
 
 .light-card input:focus,
 .light-card select:focus,
 .light-card textarea:focus {
-    border-color: #2F5233 !important;
-    box-shadow: 0 0 0 2px rgba(47, 82, 51, 0.2);
+    border-color: #A34A22 !important;
+    box-shadow: 0 0 0 3px #D9A88E;
 }
 
 /* ── Scrollbar ── */
