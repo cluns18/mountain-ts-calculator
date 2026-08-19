@@ -108,6 +108,14 @@ html, body { background: #F2EDE0; }
     font-size: 0.95rem;
     border: solid 2px #A34A22;
     font-weight: 700;
+    /* geometry must live here, not in Tailwind utilities on the element, or
+       the button drifts the moment someone edits the className */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 56px;
+    padding: 0.9rem 2.2rem;
+    border-radius: 999px;
 }
 
 .btnColor:hover {
