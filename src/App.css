@@ -102,12 +102,12 @@ html, body { background: #F2EDE0; }
 /* ── Buttons ── */
 .btnColor {
     background-color: #A34A22;
-    color: #FFFFFF;
+    color: #F2EDE0;
     font-family: 'Archivo', sans-serif;
-    letter-spacing: 0.06em;
-    font-size: 1.05rem;
+    letter-spacing: 0.02em;
+    font-size: 0.95rem;
     border: solid 2px #A34A22;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .btnColor:hover {
@@ -119,10 +119,10 @@ html, body { background: #F2EDE0; }
     background-color: transparent;
     color: #15140F;
     font-family: 'Archivo', sans-serif;
-    letter-spacing: 0.06em;
-    font-size: 1.05rem;
+    letter-spacing: 0.02em;
+    font-size: 0.95rem;
     border: solid 2px #8A8272;
-    font-weight: 600;
+    font-weight: 700;
     position: relative;
     overflow: hidden;
     transition: color 0.3s ease, border-color 0.3s ease;

@@ -21,7 +21,7 @@ export default function EmbGarmentSelect({ onNext, onPrevious, selectedGarment, 
     return (
         <>
             <div className='slide-header'>
-                <h1 className='text-3xl font-bold headingColor'>What are we embroidering?</h1>
+                <h1 className='text-3xl font-bold headingColor'>What Are We Embroidering?</h1>
                 <p className='mt-1 text-sm bodyColor'>Choose your garment type and we'll show you the options.</p>
             </div>
             <div className='slide-content'>

@@ -27,7 +27,7 @@ export default function LocationSelect({ onNext, onPrevious, selectedGarment, se
     return (
         <>
             <div className='slide-header'>
-                <h1 className='text-3xl font-bold headingColor'>Where should your design go?</h1>
+                <h1 className='text-3xl font-bold headingColor'>Where Should Your Design Go?</h1>
                 <p className='mt-1 text-sm bodyColor'>Select each placement for your design.</p>
             </div>
             <div className='slide-content'>

@@ -20,7 +20,7 @@ export default function ThreadCount({ onNext, onPrevious, selectedLocations, loc
     return (
         <>
             <div className='slide-header'>
-                <h1 className='text-3xl font-bold headingColor'>How detailed is your design?</h1>
+                <h1 className='text-3xl font-bold headingColor'>How Detailed Is Your Design?</h1>
                 <p className='mt-1 text-sm bodyColor'>
                     Most small designs run 6,000 to 10,000 stitches. Larger or more detailed work goes up to 25,000. Your best estimate works.
                 </p>

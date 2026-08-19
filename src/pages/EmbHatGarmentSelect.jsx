@@ -15,7 +15,7 @@ export default function EmbHatGarmentSelect({ onNext, onPrevious, selectedEmbGar
     return (
         <>
             <div className='slide-header'>
-                <h1 className='text-3xl font-bold headingColor'>Pick your hat</h1>
+                <h1 className='text-3xl font-bold headingColor'>Pick Your Hat</h1>
                 <p className='mt-1 text-sm bodyColor'>Different styles and price points. Choose the one that works best.</p>
             </div>
             <div className='slide-content'>

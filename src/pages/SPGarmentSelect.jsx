@@ -23,7 +23,7 @@ export default function SPGarmentSelect({ onNext, onPrevious, selectedGarment, s
     return (
         <>
             <div className='slide-header'>
-                <h1 className='text-3xl font-bold headingColor'>What are we printing on?</h1>
+                <h1 className='text-3xl font-bold headingColor'>What Are We Printing On?</h1>
                 <p className='mt-1 text-sm bodyColor'>Choose your garment type and we'll show you the options.</p>
             </div>
             <div className='slide-content'>

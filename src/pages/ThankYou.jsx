@@ -7,7 +7,7 @@ export default function ThankYou() {
         <>
             <div className='slide-header'>
                 <img src={MT_LOGO} alt="Mountain T's" style={{ width: '120px', height: 'auto', margin: '0 auto 10px', display: 'block' }} />
-                <h1 className='text-3xl font-bold headingColor'>You're all set</h1>
+                <h1 className='text-3xl font-bold headingColor'>You're All Set</h1>
                 <p className='mt-1 text-sm bodyColor'>
                     We've got everything we need. Your quote details are on the way to your inbox.
                 </p>

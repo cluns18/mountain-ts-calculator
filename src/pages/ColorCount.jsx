@@ -28,12 +28,12 @@ export default function ColorCount({ onNext, onPrevious, selectedLocations, sele
     return (
         <>
             <div className='slide-header'>
-                <h1 className='text-3xl font-bold headingColor'>How many ink colors?</h1>
+                <h1 className='text-3xl font-bold headingColor'>How Many Ink Colors?</h1>
                 <p className='mt-1 text-sm bodyColor'>Each color requires a separate screen, which factors into pricing.</p>
             </div>
             <div className='slide-content'>
                 <div>
-                    <h2 className='text-xl font-semibold headingColor'>Colors per location</h2>
+                    <h2 className='text-xl font-semibold headingColor'>Colors Per Location</h2>
                     <p className='text-sm bodyColor mt-2 mb-4'>Let us know how many colors are in each design.</p>
 
                     {needsUnderbase && (
