@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import NavBtn from '../components/NavBtn';
 
-// The screen-print matrix is 10 columns wide, so 10 screens per location is
-// the ceiling. A dark garment spends one of those on the white underbase. Past
-// the ceiling we stop quoting screen print and point at DTF, which has no screen
+// 10 screens per location is the press ceiling (MAX_SCREENS_PER_LOCATION in
+// netlify/functions/pricing.cjs; keep the two in sync). Tim's 2026 rate sheet has
+// no colour ceiling of its own, it just keeps charging the additional-colour
+// rate, so this is a physical press limit rather than a limit of the matrix.
+// A dark garment spends one of those screens on the white underbase. Past the
+// ceiling we stop quoting screen print and point at DTF, which has no screen
 // limit and needs no underbase.
 const MAX_SCREENS = 10;
 

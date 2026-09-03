@@ -25,15 +25,15 @@ exports.handler = async (event) => {
                 (numColors) => pricing.screensForLocation(numColors, needsUnderbase)
             );
 
-            // Price each location up front. A null means the matrix cannot price that
-            // many screens, and it is the ONLY gate. Summing first would let a null
-            // coerce to 0 and quietly hand back a cheap quote, which is the exact
-            // failure this fix exists to kill.
-            const perLocation = screensPerLocation.map(
-                (screens) => pricing.formulas.screenPrintingCost(screens, quantity, pricing.screenPrintingMatrix)
+            // The ceiling is a PRESS constraint, so it is checked per location: the
+            // press runs one location at a time and has a fixed number of stations.
+            // A 6-colour front plus a 6-colour back is two runnable jobs, not an
+            // unrunnable 12-station one.
+            const overCeiling = screensPerLocation.some(
+                (screens) => screens > pricing.maxScreens || screens < 1
             );
 
-            if (perLocation.some((cost) => cost === null)) {
+            if (overCeiling) {
                 return {
                     statusCode: 200,
                     headers: { "Content-Type": "application/json" },
@@ -49,11 +49,28 @@ exports.handler = async (event) => {
                 };
             }
 
+            // Tim's sheet charges the first screen at the base rate and every other
+            // screen at the additional rate, regardless of which side it lands on, so
+            // the whole job prices off ONE total screen count rather than per location.
             const totalScreens = screensPerLocation.reduce((sum, count) => sum + count, 0);
 
-            decorationCost = perLocation.reduce((total, cost) => total + cost, 0);
+            decorationCost = pricing.formulas.screenPrintingCost(
+                totalScreens, quantity, pricing.screenPrintingMatrix
+            );
 
-            totalFees = (totalScreens * pricing.fees.screenFee) / quantity;
+            if (decorationCost === null) {
+                return {
+                    statusCode: 200,
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        totalQuote: 0, pricePerItem: 0, exceedsScreens: true,
+                        screensRequired: totalScreens, maxScreens: pricing.maxScreens,
+                        needsUnderbase, recommendation: "dtf",
+                    }),
+                };
+            }
+
+            totalFees = pricing.formulas.screenFees(totalScreens, pricing.fees.screenFee) / quantity;
         }
 
         if (selectedProject === "embroidery") {
@@ -61,7 +78,11 @@ exports.handler = async (event) => {
 
             const baseEmbroideryPrice = pricing.formulas.embroideryCost(quantity, pricing.embroideryMatrix);
 
-            const extraStitchCost = totalThreadCount > 5000 ? pricing.formulas.stitchPrice(totalThreadCount) : 0;
+            // Overage past the included stitch count, priced per 1,000 at this
+            // quantity band's own rate off Tim's sheet.
+            const extraStitchCost = pricing.formulas.stitchPrice(
+                totalThreadCount, quantity, pricing.embroideryMatrix, pricing.includedStitches
+            );
 
             totalFees = pricing.formulas.embroideryFees(quantity, pricing.fees.embroiderySetupFee);
 
