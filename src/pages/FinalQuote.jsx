@@ -18,10 +18,12 @@ export default function FinalQuote({
     // MOQ must match the FLOOR OF THE PRICING MATRIX, not the shop's advertised minimum.
     // tierForQuantity() falls through to matrix[0] for anything below the smallest tier, so a
     // quantity under the floor silently gets quoted the floor's per-unit rate (under-quoting).
-    // Screen print matrix floor = 50, embroidery matrix floor = 12 (netlify/functions/pricing.cjs).
-    // Mountain T's advertises a 24-pc screen print minimum; the 24-49 band has no rate in this
-    // matrix, so those orders route to the quote form instead of getting an invented price.
-    const MOQ = selectedProject === 'screenPrinting' ? 50 : 12;
+    // Since Tim's own 2026 sheet went in (2026-09-03) the screen matrix floors at 24 and the
+    // embroidery matrix at 12, so the matrix floor and the shop minimum are now the SAME number
+    // and the old "call us for 24-49" fallback no longer has a gap to cover.
+    // Tim's sheet does price a 1-23 screen band; it is deliberately excluded, because the shop
+    // enforces a 24-piece screen-print minimum. See netlify/functions/pricing.cjs.
+    const MOQ = selectedProject === 'screenPrinting' ? 24 : 12;
     const SHOP_MIN = selectedProject === 'screenPrinting' ? 24 : 12;
 
     const garmentLabel = selectedSPGarment?.label || selectedSPGarment?.name || selectedEmbGarment?.label || selectedEmbGarment?.name || selectedGarment?.name || '';
